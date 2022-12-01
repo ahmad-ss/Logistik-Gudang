@@ -62,5 +62,11 @@ class Crud extends CI_Model {
         $this->db->delete($t);
         return $this->db->affected_rows();
     }
+    public function delData2C($w, $w2, $t){
+        $this->db->where($w);
+        $this->db->where($w2);
+        $this->db->delete($t);
+        return $this->db->affected_rows();
+    }
 
 }

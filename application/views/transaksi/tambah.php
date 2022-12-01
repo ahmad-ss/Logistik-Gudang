@@ -298,22 +298,14 @@ function submitForm(){
 		data : formData,
 	    processData: false,
 	    contentType: false,
-		dataType:'json',
 		beforeSend:function(){
 			$('#alert-transaksi').html('<div class="alert alert-warning"><i class="fa fa-spinner fa-spin"></i> Menyimpan data...</div>');
 		},success:function(result){
-			//console.log(result);
 			var r = result;
-
 			if(r.code == 0){
 				$('#alert-transaksi').html('<div class="alert alert-success">'+r.message+'</div>');
 				setTimeout(function(){
 				 	location.reload(1);
-					// $('#alert-transaksi').html('');
-					// $('input, textarea, select').val('');
-					// $('input, textarea, select').attr('readonlay', false);
-					// $('.selectpicker').attr('disabled', false);
-					// $('div[name="tombol"]').html('<a href="../main/transaksi" class="btn btn-default">Kembali</a><input onclick="saveTemp()" type="button" class="btn btn-primary" value="Simpan">');
 				},3000);
 			}else{
 				$('#alert-transaksi').html('<div class="alert alert-warning">'+r.message+'</div>');

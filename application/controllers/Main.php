@@ -107,4 +107,46 @@ class Main extends CI_Controller {
 		$data['item'] = $this->crud->getDataQuery($sql_cabang)->result();
 		$this->template->view('laporan/logistik_harian',$data);
 	}
+
+# Material
+	public function material(){
+		$data['title'] = 'Daftar Material Item';
+		$this->template->view('material/material',$data);
+	}
+
+	public function materialUpdate(){
+		$data['title'] = 'Update Material Item';
+		$this->template->view('material/update',$data);
+	}
+
+	public function materialAdd(){
+		$data['title'] = 'Tambah Material Item';
+		$item = $this->crud->selectAllOrderby('logistik_item', 'id_item', 'asc');
+		$data['item'] = $item->result();
+		$brgByr = $this->crud->selectAllOrderby('brgpi', 'id_Brg', 'asc');
+		$data['brgByr'] = $brgByr->result();
+
+		$this->template->view('material/tambah',$data);
+	}
+# planshipmrnt
+	public function planshipment(){
+		$data['title'] = 'Plan Shipment';
+		$this->template->view('planshipment/index',$data);
+	}
+
+	public function planshipmentAdd(){
+		//$brgByr = $this->crud->selectAllOrderby('brgpi', 'id_Brg', 'asc');
+		// get data from brgpi, case if id_Brg not exist in logistik_matrial
+		$sql = 'SELECT * FROM brgpi WHERE id_Brg IN (SELECT id_Brg FROM logistik_matrial)';
+		$brgByr = $this->crud->getDataQuery($sql);
+		$data['brgByr'] = $brgByr->result();
+
+		$data['title'] = 'Tambah Plan Shipment';
+		$this->template->view('planshipment/tambah',$data);
+	}
+
+	public function planshipmentReport(){
+		$data['title'] = 'Tambah Plan Shipment';
+		$this->template->view('planshipment/report',$data);
+	}
 }

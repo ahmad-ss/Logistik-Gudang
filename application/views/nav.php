@@ -32,6 +32,14 @@
             <li><a href="<?php echo base_url();?>main/laporanlogistikharian">Kartu Stock Barang</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pengiriman <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="<?php echo base_url();?>main/material">Daftar Material Item</a></li>
+            <li><a href="<?php echo base_url();?>main/planshipment">Daftar Planning Pengiriman</a></li>
+            <li><a href="<?php echo base_url();?>main/planshipmentReport">Planning Report</a></li>
+          </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $this->session->userdata('username_user');?></a></li>
